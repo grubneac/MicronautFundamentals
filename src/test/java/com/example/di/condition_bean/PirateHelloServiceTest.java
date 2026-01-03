@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PirateHelloServiceTest {
 
     @Test
-    void sauHello(HelloService helloService) {
-        assertEquals("Ahoy", helloService.sauHello());
+    void sayHello(HelloService helloService) {
+        assertEquals("Ahoy", helloService.sayHello());
     }
 
     @MockBean(DateProvider.class)

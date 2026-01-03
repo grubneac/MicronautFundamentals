@@ -7,7 +7,7 @@ import jakarta.inject.Singleton;
 @Secondary
 public class DefaultHelloService implements HelloService{
     @Override
-    public String sauHello() {
+    public String sayHello() {
         return "Hello";
     }
 }

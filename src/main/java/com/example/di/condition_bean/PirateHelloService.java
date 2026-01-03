@@ -9,7 +9,7 @@ import jakarta.inject.Singleton;
 @Requires(condition = PirateDayCondition.class)
 public class PirateHelloService implements HelloService{
     @Override
-    public String sauHello() {
+    public String sayHello() {
         return "Ahoy";
     }
 }
