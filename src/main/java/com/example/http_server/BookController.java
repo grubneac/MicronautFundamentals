@@ -1,20 +1,27 @@
 package com.example.http_server;
 
+import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 @Controller("/books")
 public class BookController {
+    private static final Logger LOG = LoggerFactory.getLogger(BookController.class);
     public static final Book NETTY_IN_ACTION =
             new Book("Netty in Action", "3245276", 263);
 
     @Get("/show")
-    Book show() {
-        return NETTY_IN_ACTION;
+    Book show(HttpRequest<?> httpRequest) {
+        for (String name: httpRequest.getHeaders().names()) {
+            LOG.info("Header {}  : {}", name, httpRequest.getHeaders().get(name));
+        }
+            return NETTY_IN_ACTION;
     }
 
     @Get("/list")
