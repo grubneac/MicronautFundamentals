@@ -5,6 +5,7 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
+import io.micronaut.http.cookie.Cookie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +40,7 @@ public class BookController {
     @Get("/list/status")
     HttpResponse<List<Book>> listStatus() {
         return HttpResponse.status(HttpStatus.OK)
+                .cookie(Cookie.of("myCookie", "myValue"))
                 .body(List.of(NETTY_IN_ACTION));
     }
 
