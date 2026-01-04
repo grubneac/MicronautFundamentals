@@ -1,5 +1,7 @@
 package com.example.http_server;
 
+import io.micronaut.http.HttpRequest;
+import io.micronaut.http.MutableHttpRequest;
 import io.micronaut.http.client.BlockingHttpClient;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -33,5 +35,15 @@ class BookControllerTest {
         String actualJason = assertDoesNotThrow(() -> client.retrieve("/books/show"));
         assertEquals(expectedJson, actualJason);
 
+    }
+
+    @Test
+    void saveTest(@Client("/")HttpClient httpClient) {
+        BlockingHttpClient client = httpClient.toBlocking();
+        String expectedJson = """
+                {"name":"Netty in Action","isbn":"3245276","pages":263}""";
+        MutableHttpRequest<String> request = HttpRequest.POST("/books", expectedJson);
+        String actualJson = assertDoesNotThrow(() -> client.retrieve(request));
+        assertEquals(expectedJson,actualJson);
     }
 }

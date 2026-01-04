@@ -4,9 +4,7 @@ import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.QueryValue;
+import io.micronaut.http.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,5 +40,11 @@ public class BookController {
     HttpResponse<List<Book>> listStatus() {
         return HttpResponse.status(HttpStatus.OK)
                 .body(List.of(NETTY_IN_ACTION));
+    }
+
+    @Post
+    Book save(@Body Book book) {
+        LOG.info("Save Book: {}", book);
+        return book;
     }
 }
