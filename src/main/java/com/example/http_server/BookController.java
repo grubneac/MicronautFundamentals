@@ -1,6 +1,7 @@
 package com.example.http_server;
 
 import io.micronaut.core.annotation.Nullable;
+import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
@@ -33,7 +34,8 @@ public class BookController {
     }
 
     @Get("/list/response")
-    HttpResponse<List<Book>> listHttpResponse() {
+    HttpResponse<List<Book>> listHttpResponse(@Nullable @Header(HttpHeaders.USER_AGENT) String userAgent) {
+        LOG.info("Header User-Agent: {}", userAgent);
         return HttpResponse.ok(List.of(NETTY_IN_ACTION));
     }
 
