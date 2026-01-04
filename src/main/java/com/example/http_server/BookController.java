@@ -40,6 +40,7 @@ public class BookController {
     }
 
     @Get("/list/status")
+    @Status(HttpStatus.OK)
     HttpResponse<List<Book>> listStatus() {
         return HttpResponse.status(HttpStatus.OK)
                 .cookie(Cookie.of("myCookie", "myValue"))
@@ -47,8 +48,8 @@ public class BookController {
     }
 
     @Post
-    Book save(@Body Book book) {
+    HttpResponse<Book> save(@Body Book book) {
         LOG.info("Save Book: {}", book);
-        return book;
+        return HttpResponse.created(book);
     }
 }
