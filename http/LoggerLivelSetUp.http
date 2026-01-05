@@ -1,0 +1,10 @@
+###
+GET http://localhost:8080/loggers/com.example
+
+<> 2026-01-05T131116.200.json
+
+###
+POST http://localhost:8080/loggers/com.example
+Content-Type: application/json
+
+{"configuredLevel":"INFO"}
