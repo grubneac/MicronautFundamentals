@@ -14,7 +14,7 @@ class HelloWorldControllerTest {
     @Test
     void getAll(@Client("/")HttpClient httpClient) {
         BlockingHttpClient blocking = httpClient.toBlocking();
-        String json = assertDoesNotThrow(() -> blocking.retrieve("/"));
+        String json = assertDoesNotThrow(() -> blocking.retrieve("/hello"));
         assertEquals("""
                 {"message":"Hello World"}""", json);
 

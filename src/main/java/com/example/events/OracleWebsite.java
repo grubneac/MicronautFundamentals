@@ -4,7 +4,7 @@ package com.example.events;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.sourcegen.annotations.Builder;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Builder
 @Introspected(accessKind = Introspected.AccessKind.FIELD)
