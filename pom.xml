@@ -210,6 +210,18 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <from>
+                        <image>ghcr.io/graalvm/graalvm-community:25.0.1</image>
+                    </from>
+                    <to>
+                        <image>micronautfundamentals:latest</image>
+                    </to>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
